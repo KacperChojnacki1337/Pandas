@@ -1,22 +1,20 @@
 import pandas as pd
 
 # Ścieżka do folderu z plikami Excela
-folder_path = '/ścieżka/do/twojego/folderu/'
+folder_path = 'Check1/'
 
 # Lista plików w folderze
-file_list = ['plik1.xlsx', 'plik2.xlsx', 'plik3.xlsx']  # Dodaj więcej plików, jeśli potrzebujesz
+file_list = ['Excel1.xlsx']  # Dodaj więcej plików, jeśli potrzebujesz
+
 
 # Iteruj przez każdy plik
 for file_name in file_list:
     try:
         # Wczytaj plik Excela
-        df = pd.read_excel(folder_path + file_name)
-
+        df = pd.read_excel(folder_path + file_name,index_col=None)
         # Przekopiuj wartość z komórki A1 do B1
-        df.loc[0, 'B'] = df.loc[0, 'A']
-
-        # Zapisz zmiany do pliku
-        df.to_excel(folder_path + file_name, index=False)
-        print(f'Zaktualizowano plik: {file_name}')
+        for i in range (13,17):
+            df.iat[i, 1] = df.iat[0, 6]
     except Exception as e:
         print(f'Błąd w pliku {file_name}: {e}')
+print(df)
