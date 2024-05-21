@@ -1,0 +1,38 @@
+#count the number of missing values
+n_missings_each_col = df.apply(lambda x: x.isnull().sum())
+
+#import only specified columns
+df = pd.read_csv('https://raw.githubusercontent.com/selva86/datasets/master/BostonHousing.csv', usecols=['crim', 'medv'])
+
+#any null values
+df.isnull().values.any()
+
+#rename the column
+df.columns = df.columns.map(lambda x: x.replace('.', '_'))
+
+#replace missing values of multiple numeric columns with the mean?
+df_out = df[['Min.Price', 'Max.Price']] = df[['Min.Price', 'Max.Price']].apply(lambda x: x.fillna(x.mean()))
+
+#switching the order of columns #1
+def switch_columns(df, col1=None, col2=None):
+    colnames = df.columns.tolist()
+    i1, i2 = colnames.index(col1), colnames.index(col2)
+    colnames[i2], colnames[i1] = colnames[i1], colnames[i2]
+    return df[colnames]
+#switching the order of columns #2
+df = df[['kolumna3', 'kolumna1', 'kolumna2']]
+
+#percentage format
+out = df.style.format({
+    'random': '{0:.2%}'.format,
+})
+
+#filter every nth row in a dataframe
+print(df.iloc[::20, :][['Manufacturer', 'Model', 'Type']])
+
+#unique werify
+print(df.index.is_unique)
+
+
+
+
