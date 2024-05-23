@@ -33,6 +33,12 @@ print(df.iloc[::20, :][['Manufacturer', 'Model', 'Type']])
 #unique werify
 print(df.index.is_unique)
 
+#fill NA by mean
+df_out = df[['Min.Price', 'Max.Price']] = df[['Min.Price', 'Max.Price']].apply(lambda x: x.fillna(x.mean()))
+print(df_out.head())
+
+# fill_na
+df[['Manufacturer', 'Model', 'Type']] = df[['Manufacturer', 'Model', 'Type']].fillna('missing')
 
 
 
