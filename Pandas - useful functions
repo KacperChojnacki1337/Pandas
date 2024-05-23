@@ -40,5 +40,15 @@ print(df_out.head())
 # fill_na
 df[['Manufacturer', 'Model', 'Type']] = df[['Manufacturer', 'Model', 'Type']].fillna('missing')
 
+#max value
+df = df [['company','price']][df.price==df['price'].max()]
+
+#groupby
+car_Manufacturers = df.groupby('company')
+toyotaDf = car_Manufacturers.get_group('toyota')
+toyotaDf
+
+#counting values per column
+df['company'].value_counts()
 
 
