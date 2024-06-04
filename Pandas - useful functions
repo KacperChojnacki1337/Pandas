@@ -52,3 +52,13 @@ toyotaDf
 df['company'].value_counts()
 
 
+#check if column has only numeric values
+def is_not_numeric(x):
+  try:
+    float(x)
+    return False  # If conversion to float is successful, it's numeric
+  except ValueError:
+    return True  # If conversion fails, it's not numeric
+
+print(df_val[df_val['Age'].apply(is_not_numeric)])
+
