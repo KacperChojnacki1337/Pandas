@@ -62,3 +62,7 @@ def is_not_numeric(x):
 
 print(df_val[df_val['Age'].apply(is_not_numeric)])
 
+
+#apply percentage
+df['% share in all'] = df['% share in all'].apply(lambda x: f"{x:.2%}""")
+
